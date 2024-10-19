@@ -100,7 +100,26 @@
     });
 
 
+        // Función para cambiar el idioma
+        function changeLanguage(lang) {
+        // Selecciona todos los elementos con textos traducibles
+        const translatableElements = document.querySelectorAll('[data-en][data-es]');
 
+        translatableElements.forEach(element => {
+        element.textContent = element.getAttribute('data-' + lang);
+    });
+    }
+
+        // Evento para el selector de idioma
+        const languageSwitcher = document.getElementById('languageSwitcher');
+        languageSwitcher.addEventListener('change', (e) => {
+        changeLanguage(e.target.value);
+    });
+
+        // Establecer el idioma inicial basado en el valor del selector
+        document.addEventListener('DOMContentLoaded', () => {
+        changeLanguage(languageSwitcher.value);
+    });
 
 
 })(jQuery);
